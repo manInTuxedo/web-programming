@@ -1,5 +1,5 @@
-create database New_BMI_Health_Tracker;
-use New_BMI_Health_Tracker;
+create database health_tracker;
+use health_tracker;
 CREATE TABLE users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(20) NOT NULL UNIQUE,

@@ -1,35 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <!--Base Head info-->
-    <meta charset="UTF-8"> <!--It supports many languages-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Inetial Zoom 100%-->
-    <meta name="description" content="Track your health stats, calculate BMI instantly, and monitor fitness goals with this easy-to-use health tracker, Progress chart and visual tracker for fitness progress."> 
-    <meta name="keywords" content="BMI calculator, health tracker, fitness tracker, body mass index, weight management, wellness app, healthy lifestyle, fitness goals, nutrition, exercise, progress, VitalTrack">
-    <link rel="icon" href="pics/YellowHeart.png">
-    <!--Base Head info-->
 
-    
-    <title>VitalTrack - Dashboard</title>
-    <link rel="stylesheet" href="03-Dasboard.css">
-    
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!--chart.js library-->
+<head>
+  <!--Base Head info-->
+  <meta charset="UTF-8"> <!--It supports many languages-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Inetial Zoom 100%-->
+  <meta name="description"
+    content="Track your health stats, calculate BMI instantly, and monitor fitness goals with this easy-to-use health tracker, Progress chart and visual tracker for fitness progress.">
+  <meta name="keywords"
+    content="BMI calculator, health tracker, fitness tracker, body mass index, weight management, wellness app, healthy lifestyle, fitness goals, nutrition, exercise, progress, VitalTrack">
+  <link rel="icon" href="pics/YellowHeart.png">
+  <!--Base Head info-->
+
+
+  <title>VitalTrack - Dashboard</title>
+  <link rel="stylesheet" href="01-Main.css">
+  <link rel="stylesheet" href="03-Dasboard.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!--chart.js library-->
 </head>
+
 <body>
 
-  <!--Navigation bar
-  1. Dashboard
-  2. Profile
-  3. Settings
-  4. Logout
-  5. FAQ
-  6. Contact Us  
-  -->
+  <!--Navigation-->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="01-Main.html" class="logo">
+        <img src="pics/YellowHeart.png" alt="Yellow Heart Logo">
+        VitalTrack
+      </a>
+      <ul class="nav-links">
+        <li><a href="01-Main.html">Home</a></li>
+        <li><a href="03-Dashboard.html">Dashboard</a></li>
+        <li><a href="05-Profile.html">Profile</a></li>
+        <li><a href="04-FAQ.html">FAQ</a></li>
+        <li><a href="07-Contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-buttons">
+        <button class="btn btn-login" onclick="window.location.href='../backend/auth/logout.php'">Logout</button>
+      </div>
+    </div>
+  </nav>
 
   <!-- <button style=>Dark Mode</button> change the body/content color, advanced transition -->
-  <h1 style="margin-top: 60px; font-size: 25px; text-align:center"> 
+  <h1 style="margin-top: 60px; font-size: 25px; text-align:center">
     Dashboard
-  </h1>  
+  </h1>
 
   <p style="text-align: center; margin-bottom: 60px;">
     Track your <b>body mass index</b> and monitor you <b>progress</b> over time!
@@ -38,20 +54,22 @@
 
 
   <div class="calculator_container">
-    
+
     <h1 style="font-size: 30px; text-align: center;">Body Mass Index <br> (BMI) Calculator</h1>
 
     <p>Your Height (cm): </p>
     <input type="number" class="calculator_container_input" id="height" placeholder="Enter your height in cm...">
     <p>Your Weight (kg): </p>
-    <input style="margin-bottom: 15px" type="number" class="calculator_container_input" id="weight" placeholder="Enter your weight in kg...">
-  
+    <input style="margin-bottom: 15px" type="number" class="calculator_container_input" id="weight"
+      placeholder="Enter your weight in kg...">
+
     <button class="calculator_container_submit" id="calculate_button">Compute BMI</button> <!--JS-->
-    
-    <input disabled type="text" class="calculator_container_result" id="bmi_result" placeholder="Your BMI will appear here...">
+
+    <input disabled type="text" class="calculator_container_result" id="bmi_result"
+      placeholder="Your BMI will appear here...">
     <h4>feedback: </h4> <span id="calculator_container_info"></span>
   </div>
-  
+
   <!---->
   <div style="text-align:center; margin-top:16px;">
     <button id="save_entry" class="calculator_container_submit" style="background:#4CAF50;">Save Entry</button>
@@ -59,143 +77,188 @@
   </div>
 
   <p style="text-align: center; margin-bottom: 60px;">
-    <strong>Note</strong> — The results shown are based on general medical indicators and body mass index (BMI) rates as reported in medical research and references. This tool does not replace consultation with a qualified physician.
+    <strong>Note</strong> — The results shown are based on general medical indicators and body mass index (BMI) rates as
+    reported in medical research and references. This tool does not replace consultation with a qualified physician.
   </p>
 
   <div style="max-width:800px; margin:20px auto; background:rgba(255,255,255,0.6); padding:12px; border-radius:8px;">
-   <canvas id="bmiChart" height="200"></canvas>
+    <canvas id="bmiChart" height="200"></canvas>
   </div>
 
-<script>
-  const saveBtn = document.getElementById('save_entry');
-  const showBtn = document.getElementById('show_progress');
-  const heightInput = document.getElementById('height');
-  const weightInput = document.getElementById('weight');
-  const bmiResult = document.getElementById('bmi_result');
-  const infoSpan = document.getElementById('calculator_container_info');
-  const chartCanvas = document.getElementById('bmiChart');
+  <script>
+    const saveBtn = document.getElementById('save_entry');
+    const showBtn = document.getElementById('show_progress');
+    const heightInput = document.getElementById('height');
+    const weightInput = document.getElementById('weight');
+    const bmiResult = document.getElementById('bmi_result');
+    const infoSpan = document.getElementById('calculator_container_info');
+    const chartCanvas = document.getElementById('bmiChart');
 
 
-  let bmiChart = null;
+    let bmiChart = null;
 
 
-  function calculateBMIValue() {
-    const h = Number(heightInput.value) / 100;
-    const w = Number(weightInput.value);
-    if (!h || !w) return null;
-    return Number((w / (h * h)).toFixed(2));
-  }
-
-  function validateAndShow() {
-    const val = calculateBMIValue();
-    if (val === null) {
-      infoSpan.innerText = "Please enter valid height and weight!";
-      bmiResult.value = '';
-      return null;
-  }
-    bmiResult.value = val;
-    if (val < 18.5) infoSpan.innerText = "You are underweight, eat more nutritious food!";
-    else if (val <= 24.9) infoSpan.innerText = "You have a normal weight, good job!";
-    else if (val <= 29.9) infoSpan.innerText = "You are overweight, consider exercising more!";
-    else infoSpan.innerText = "You have Obesity, please consult a doctor for advice!";
-    return val;
-  }
-
-  // استدعاء عند الضغط على Compute BMI
-  document.getElementById('calculate_button').addEventListener('click', validateAndShow);
-
-  // دالة مساعدة لتنسيق التاريخ dd/mm/yyyy
-  function formatDate(d = new Date()) {
-    const day = String(d.getDate()).padStart(2, '0');
-    const month = String(d.getMonth() + 1).padStart(2, '0');
-    const year = d.getFullYear();
-    return `${day}/${month}/${year}`;
-  }
-
-  // حفظ السجل في localStorage
-  function loadHistory() {
-    try {
-      return JSON.parse(localStorage.getItem('bmi_history') || '[]');
-    } catch {
-      return [];
+    function calculateBMIValue() {
+      const h = Number(heightInput.value) / 100;
+      const w = Number(weightInput.value);
+      if (!h || !w) return null;
+      return Number((w / (h * h)).toFixed(2));
     }
-  }
-  function saveHistory(history) {
-    localStorage.setItem('bmi_history', JSON.stringify(history));
-  }
 
-  saveBtn.addEventListener('click', () => {
-    const val = validateAndShow();
-    if (val === null) return;
-    const history = loadHistory();
-    history.push({ date: formatDate(), bmi: val });
-    saveHistory(history);
-    infoSpan.innerText = "Entry saved";
-  });
-
-  function renderChart() {
-    const history = loadHistory();
-    if (!history.length) {
-      infoSpan.innerText = "No saved entries yet. Use Save Entry to add today's BMI.";
-      return;
-    }
-    // ترتيب حسب التاريخ لو احتجت (هنا نفترض الإدخالات بالترتيب)
-    const labels = history.map(h => h.date);
-    const data = history.map(h => h.bmi);
-
-    const cfg = {
-      type: 'line',
-      data: {
-        labels,
-        datasets: [{
-          label: 'BMI over time',
-          data,
-          borderColor: '#1976d2',
-          backgroundColor: 'rgba(25,118,210,0.1)',
-          tension: 0.25,
-          fill: true,
-          pointRadius: 4
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            title: { display: true, text: 'BMI' },
-            suggestedMin: 10,
-            suggestedMax: 40
-          },
-          x: {
-            title: { display: true, text: 'Date' }
-          }
-        },
-        plugins: {
-          legend: { display: false },
-          tooltip: { mode: 'index', intersect: false }
-        },
-        responsive: true,
-        maintainAspectRatio: false
+    function validateAndShow() {
+      const val = calculateBMIValue();
+      if (val === null) {
+        infoSpan.innerText = "Please enter valid height and weight!";
+        bmiResult.value = '';
+        return null;
       }
-    };
-
-    if (bmiChart) {
-      bmiChart.data.labels = labels;
-      bmiChart.data.datasets[0].data = data;
-      bmiChart.update();
-    } else {
-      bmiChart = new Chart(chartCanvas.getContext('2d'), cfg);
+      bmiResult.value = val;
+      if (val < 18.5) infoSpan.innerText = "You are underweight, eat more nutritious food!";
+      else if (val <= 24.9) infoSpan.innerText = "You have a normal weight, good job!";
+      else if (val <= 29.9) infoSpan.innerText = "You are overweight, consider exercising more!";
+      else infoSpan.innerText = "You have Obesity, please consult a doctor for advice!";
+      return val;
     }
-    infoSpan.innerText = `Showing ${history.length} saved entries.`;
-  }
+
+    // استدعاء عند الضغط على Compute BMI
+    document.getElementById('calculate_button').addEventListener('click', validateAndShow);
+
+    // دالة مساعدة لتنسيق التاريخ dd/mm/yyyy
+    function formatDate(d = new Date()) {
+      const day = String(d.getDate()).padStart(2, '0');
+      const month = String(d.getMonth() + 1).padStart(2, '0');
+      const year = d.getFullYear();
+      return `${day}/${month}/${year}`;
+    }
+
+    // حفظ السجل في localStorage
+    function loadHistory() {
+      try {
+        return JSON.parse(localStorage.getItem('bmi_history') || '[]');
+      } catch {
+        return [];
+      }
+    }
+    function saveHistory(history) {
+      localStorage.setItem('bmi_history', JSON.stringify(history));
+    }
+
+    saveBtn.addEventListener('click', () => {
+      const val = validateAndShow();
+      if (val === null) return;
+
+      // Determine status
+      let status = "";
+      if (val < 18.5) status = "Underweight";
+      else if (val <= 24.9) status = "Normal";
+      else if (val <= 29.9) status = "Overweight";
+      else status = "Obese";
+
+      // Prepare data
+      const data = {
+        weight: weightInput.value,
+        height: heightInput.value,
+        bmi: val,
+        status: status
+      };
+
+      // Send to backend
+      fetch('../backend/bmi/save_bmi.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            infoSpan.innerText = "Entry saved to database!";
+            infoSpan.style.color = "green";
+
+            // Still save to local storage for offline demo/chart continuity
+            const history = loadHistory();
+            history.push({ date: formatDate(), bmi: val });
+            saveHistory(history);
+          } else {
+            infoSpan.innerText = "Error saving: " + data.message;
+            infoSpan.style.color = "red";
+            if (data.message === 'Unauthorized') {
+              alert("Please login to save your BMI data.");
+              window.location.href = "02-login.html";
+            }
+          }
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          infoSpan.innerText = "Network error.";
+        });
+    });
+
+    function renderChart() {
+      const history = loadHistory();
+      if (!history.length) {
+        infoSpan.innerText = "No saved entries yet. Use Save Entry to add today's BMI.";
+        return;
+      }
+      // ترتيب حسب التاريخ لو احتجت (هنا نفترض الإدخالات بالترتيب)
+      const labels = history.map(h => h.date);
+      const data = history.map(h => h.bmi);
+
+      const cfg = {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [{
+            label: 'BMI over time',
+            data,
+            borderColor: '#1976d2',
+            backgroundColor: 'rgba(25,118,210,0.1)',
+            tension: 0.25,
+            fill: true,
+            pointRadius: 4
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              title: { display: true, text: 'BMI' },
+              suggestedMin: 10,
+              suggestedMax: 40
+            },
+            x: {
+              title: { display: true, text: 'Date' }
+            }
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: { mode: 'index', intersect: false }
+          },
+          responsive: true,
+          maintainAspectRatio: false
+        }
+      };
+
+      if (bmiChart) {
+        bmiChart.data.labels = labels;
+        bmiChart.data.datasets[0].data = data;
+        bmiChart.update();
+      } else {
+        bmiChart = new Chart(chartCanvas.getContext('2d'), cfg);
+      }
+      infoSpan.innerText = `Showing ${history.length} saved entries.`;
+    }
 
 
-  showBtn.addEventListener('click', renderChart);
+    showBtn.addEventListener('click', renderChart);
 
-  // عند تحميل الصفحة، حاول عرض أي نتيجة سابقة خفيفة
-  window.addEventListener('load', () => {
-    const history = loadHistory();
-    if (history.length) renderChart();
-  });
+    // عند تحميل الصفحة، حاول عرض أي نتيجة سابقة خفيفة
+    window.addEventListener('load', () => {
+      const history = loadHistory();
+      if (history.length) renderChart();
+    });
 
-</script>
+  </script>
 </body>
+
 </html>

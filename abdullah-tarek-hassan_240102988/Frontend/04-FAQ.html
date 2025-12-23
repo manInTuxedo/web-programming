@@ -1,20 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!--Base Head info-->
     <meta charset="UTF-8"> <!--It supports many languages-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Inetial Zoom 100%-->
-    <meta name="description" content="Track your health stats, calculate BMI instantly, and monitor fitness goals with this easy-to-use health tracker, Progress chart and visual tracker for fitness progress."> 
-    <meta name="keywords" content="BMI calculator, health tracker, fitness tracker, body mass index, weight management, wellness app, healthy lifestyle, fitness goals, nutrition, exercise, progress, VitalTrack">
+    <meta name="description"
+        content="Track your health stats, calculate BMI instantly, and monitor fitness goals with this easy-to-use health tracker, Progress chart and visual tracker for fitness progress.">
+    <meta name="keywords"
+        content="BMI calculator, health tracker, fitness tracker, body mass index, weight management, wellness app, healthy lifestyle, fitness goals, nutrition, exercise, progress, VitalTrack">
     <link rel="icon" href="pics/YellowHeart.png">
     <!--Base Head info-->
 
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VitalTrack - </title>
+    <title>VitalTrack - FAQ</title>
+    <link rel="stylesheet" href="01-Main.css">
+    <style>
+        .faq_container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .faq_item {
+            background: rgba(255, 255, 255, 0.6);
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .faq_item:hover {
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq_question {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq_answer {
+            margin-top: 15px;
+            color: #555;
+            display: none;
+            line-height: 1.6;
+        }
+
+        .faq_item.active .faq_answer {
+            display: block;
+        }
+
+        .faq_toggle {
+            font-size: 24px;
+            color: #7494ec;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <!--Navigation-->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="01-Main.html" class="logo">
+                <img src="pics/YellowHeart.png" alt="Yellow Heart Logo">
+                VitalTrack
+            </a>
+            <ul class="nav-links">
+                <li><a href="01-Main.html">Home</a></li>
+                <li><a href="03-Dashboard.html">Dashboard</a></li>
+                <li><a href="04-FAQ.html">FAQ</a></li>
+                <li><a href="07-Contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="btn btn-login" onclick="window.location.href='02-login.html'">Login</button>
+                <button class="btn btn-register" onclick="window.location.href='02-register.html'">Register</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>Frequently Asked <span class="highlight">Questions</span></h1>
+        <p>Find answers to common questions about VitalTrack and your health journey.</p>
+    </div>
+
+    <div class="faq_container">
+        <div class="faq_item" onclick="toggleFaq(this)">
+            <div class="faq_question">
+                What is BMI?
+                <span class="faq_toggle">+</span>
+            </div>
+            <div class="faq_answer">
+                BMI (Body Mass Index) is a simple calculation using a person's height and weight to measure body
+                fatness. It applies to most adult men and women aged 20 and over.
+            </div>
+        </div>
+
+        <div class="faq_item" onclick="toggleFaq(this)">
+            <div class="faq_question">
+                Is VitalTrack free to use?
+                <span class="faq_toggle">+</span>
+            </div>
+            <div class="faq_answer">
+                Yes! VitalTrack is currently free for all users. You can track your BMI and monitor your progress
+                without any cost.
+            </div>
+        </div>
+
+        <div class="faq_item" onclick="toggleFaq(this)">
+            <div class="faq_question">
+                How is my data stored?
+                <span class="faq_toggle">+</span>
+            </div>
+            <div class="faq_answer">
+                Your data is stored securely in your browser's local storage for the demo version. In the full version,
+                we use a secure database to keep your history safe.
+            </div>
+        </div>
+
+        <div class="faq_item" onclick="toggleFaq(this)">
+            <div class="faq_question">
+                Can I use VitalTrack on mobile?
+                <span class="faq_toggle">+</span>
+            </div>
+            <div class="faq_answer">
+                Absolutely! Our website is fully responsive and works great on smartphones and tablets.
+            </div>
+        </div>
+    </div>
+
+    <!--Footer-->
+    <footer class="footer">
+        <p>&copy; 2024 VitalTrack. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="04-FAQ.html">FAQ</a>
+            <a href="07-Contact.html">Contact Us</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFaq(element) {
+            element.classList.toggle('active');
+            const toggle = element.querySelector('.faq_toggle');
+            if (element.classList.contains('active')) {
+                toggle.textContent = '-';
+            } else {
+                toggle.textContent = '+';
+            }
+        }
+    </script>
 </body>
+
 </html>

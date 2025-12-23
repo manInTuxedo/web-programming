@@ -7,36 +7,37 @@
     font-family: "Poppins", serif;
 }
 
-body{
+body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(to right,#e2e2e2,#c9d6ff);
+    background: linear-gradient(to right, #e3ffe7, #d9e7ff);
     color: #333;
 }
 
-.login_container {     
+.login_container {
     margin: 0 15px;
 }
 
-.form-box{
+.form-box {
     width: 100%;
     max-width: 450px;
     padding: 30px;
     background: #fff;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h2{
+h2 {
     font-size: 34px;
     text-align: center;
     margin-bottom: 20px;
 
 }
+
 input,
-select{
+select {
     width: 100%;
     padding: 12px;
     background: #eee;
@@ -47,7 +48,8 @@ select{
     color: #333;
     margin-bottom: 20px;
 }
-button{
+
+button {
     width: 100%;
     padding: 12px;
     background: #7494ec;
@@ -60,10 +62,12 @@ button{
     margin-bottom: 20px;
     transition: 0.5s;
 }
-button:hover{
+
+button:hover {
     background: #2047b1;
 }
-p{
+
+p {
     font-size: 14.5px;
     text-align: center;
     margin-bottom: none;
@@ -74,6 +78,6 @@ p a {
     text-decoration: none;
 }
 
-p a:hover{
+p a:hover {
     text-decoration: underline;
 }
