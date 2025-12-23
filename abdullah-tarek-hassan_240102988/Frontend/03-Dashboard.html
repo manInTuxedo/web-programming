@@ -6,34 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Inetial Zoom 100%-->
     <meta name="description" content="Track your health stats, calculate BMI instantly, and monitor fitness goals with this easy-to-use health tracker, Progress chart and visual tracker for fitness progress."> 
     <meta name="keywords" content="BMI calculator, health tracker, fitness tracker, body mass index, weight management, wellness app, healthy lifestyle, fitness goals, nutrition, exercise, progress, VitalTrack">
-    <link rel="icon" href="pics/YellowHeart.png">
+    <link rel="icon" href="pics/checkmark + heart.jpg">
     <!--Base Head info-->
 
     
     <title>VitalTrack - Dashboard</title>
-    <link rel="stylesheet" href="03-Dasboard.css">
+    <link rel="stylesheet" href="03-Dashboard.css">
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!--chart.js library-->
 </head>
 <body>
 
   <!--Navigation bar
-  1. Dashboard
-  2. Profile
-  3. Settings
-  4. Logout
-  5. FAQ
-  6. Contact Us  
+  Logo/Brand(Main) | Dashboard | FAQ |Logout| (User Profile Dropdown)
   -->
 
-  <!-- <button style=>Dark Mode</button> change the body/content color, advanced transition -->
-  <h1 style="margin-top: 60px; font-size: 25px; text-align:center"> 
-    Dashboard
-  </h1>  
+  <nav class="navbar">
 
-  <p style="text-align: center; margin-bottom: 60px;">
-    Track your <b>body mass index</b> and monitor you <b>progress</b> over time!
-  </p>
+    <div class="navbar_main">
+      <a href="01-Main.html">
+        <img src="pics/checkmark + heart.jpg" alt="VitalTrack Logo">
+        <span>VitalTrack</span>
+      </a>
+    </div>
+
+    <div class="navbar_content">
+      <a href="03-Dashboard.html">Dashboard</a>
+      <a href="04-FAQ.html      ">FAQ</a>
+      <a href="02-login.html    ">Log Out</a>
+    </div>
+
+
+    <div class="navbar_user">
+      <div class="navbar_user_dropdown">
+        <button class="navbar_user_button">Profile &#9662;</button>
+        <div class="navbar_user_dropdown_content">
+          <a href="05-UserProfile.html">View Profile</a>
+          <a href="01-Home.html">Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div style="height: 60px;"></div>
+
+  <!-- <button style=>Dark Mode</button> change the body/content color, advanced transition -->
+  <div>
+    <h1 style="font-size: 25px;"> 
+      Welcome!
+    </h1>  
+
+    <p style="margin-bottom: 20px;">
+      Track your <b>body mass index</b> and monitor you <b>progress</b> over time!
+    </p>    
+  </div>
+
 
 
 

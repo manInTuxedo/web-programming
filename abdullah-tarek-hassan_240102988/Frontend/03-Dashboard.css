@@ -2,7 +2,6 @@
 
 
 body{
-
     background: linear-gradient(to right, #e3ffe7, #d9e7ff);
     min-height: 100vh; 
     font-family: "Poppins", serif;
@@ -11,6 +10,65 @@ body{
 b{
     color: blue;
 }
+
+
+
+
+
+.navbar{
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    
+    position:fixed;
+    top:0; 
+    width:100%;
+
+    padding: 10px 30px; 
+
+    display:flex; 
+    justify-content: space-between;
+    align-items: center;
+
+    margin-left: 39px;
+    align-items:center; 
+    z-index:1000;
+}
+
+.navbar_main a{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 30px;
+    font-weight: 700;
+    color: #333;
+    text-decoration: none
+}
+
+.navbar_main img{
+    position: fixed;
+    left: 0;
+
+    height: 47px;
+    width: auto;
+}
+
+.navbar_content{
+    display: flex;
+    justify-content:center;
+    text-align: ;
+    margin:1px 20px;
+    gap: 20px;   
+}
+
+.navbar_content a{
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    text-decoration: none;
+}
+
+
 
 .calculator_container{
     background-color: rgba(255, 255, 255, 0.4);
