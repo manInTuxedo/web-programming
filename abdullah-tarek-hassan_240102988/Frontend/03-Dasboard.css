@@ -1,9 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+
 body{
-    background: linear-gradient(to right top, #FFF44F, #FFDD00, #FFAA00);
-    min-height: 100vh; /*at-least height*/
-    font-family: "Geom", sans-serif;
+
+    background: linear-gradient(to right, #e3ffe7, #d9e7ff);
+    min-height: 100vh; 
+    font-family: "Poppins", serif;
 }
 
+b{
+    color: blue;
+}
 
 .calculator_container{
     background-color: rgba(255, 255, 255, 0.4);
