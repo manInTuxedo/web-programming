@@ -10,7 +10,7 @@
     <meta name="keywords"
         content="Health Tracker, Register, BMI Calculator, Health Monitoring, BMI calculator, health tracker, fitness tracker, body mass index, weight management, wellness app, healthy lifestyle, fitness goals, nutrition, exercise, progress, VitalTrack">
     <meta name="author" content="VitalTrack Team">
-    <link rel="icon" href="pics/YellowHeart.png">
+    <link rel="icon" href="pics/checkmark + heart.jpg">
     <!--Base Head info-->
 
 
@@ -19,31 +19,29 @@
 </head>
 
 <body>
-
-    <div class="register_container">
-        <div class="form-box" id="register-form">
-            <form action="../backend/auth/register.php" method="post">
-                <h2>Register</h2>
-                <label for="Name">Name </label>
-                <input type="text" name="Name" placeholder="Enter your Name" required>
-                <label for="birth-date">Date of Birth</label>
-                <input type="date" id="birth-date" name="birth-date" placeholder="Enter your Birth Date " required
-                    max="2025-12-13">
-                <label for="email">Email </label>
-                <input type="email" name="email" placeholder="Enter your Email" required>
-                <label for="password">Password </label>
-                <input type="password" name="password" placeholder=" Enter a Password" required>
-                <select>
-                    <option value="">--Select gender--</option>
-                    <option value="male">male</option>
-                    <option value="female">female</option>
-                </select>
-                <button>register</button>
-                <p>Already have an account? <a href="02-login.html">Login</a></p>
-                <p style="margin-top: 10px;"><a href="01-Main.html">Back to Home</a></p>
-            </form>
-
-        </div>
+    
+<div class="register_container">
+    <div class="form-box" id="register-form">
+        <form action="C:\xampp\htdocs\Web project\health-tracker-bmi\backend\auth\register.php" method="post">
+            <h2>Register</h2>
+            <label for="Name">Name </label>
+            <input type="text" name="Name" placeholder="Enter your Name"required>
+            <label for="birth-date">Date of Birth</label>
+            <input type="date" id="birth-date" name="birth-date"placeholder="Enter your Birth Date " required max="2025-12-13">
+            <label for="email">Email </label>
+            <input type="email" name="email" placeholder="Enter your Email" required>
+            <label for="password">Password </label>
+            <input type="password" name="password" placeholder=" Enter a Password" required>
+            <select>
+                <option value="">--Select gender--</option>
+                <option value="male">male</option>
+                <option value="female">female</option>
+            </select>
+            <button>register</button>
+             <p>Already have an account? <a href="login.html">Login</a> </p>
+        </form>
+  
+    </div>
 
     </div>
 </body>
