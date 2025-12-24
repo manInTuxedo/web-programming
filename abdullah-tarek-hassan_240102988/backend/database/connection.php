@@ -3,7 +3,7 @@
 
 <?php
 $host = "127.0.0.1";
-$dbname = "health-tracker";
+$dbname = "health_tracker_app";
 $user = "root";
 $password = "2007"; 
 

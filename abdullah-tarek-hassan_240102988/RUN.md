@@ -27,7 +27,7 @@ If you haven't already, download and install [XAMPP](https://www.apachefriends.o
 ## Troubleshooting
 - **Database Connection Error?**
     - Open `backend/database/connection.php`.
-    - Check if `$password` matches your MySQL password (default for XAMPP is empty `""`).
+    - Check if `$password` matches your MySQL password (default for XAMPP is empty `"2007"`).
 - **404 Not Found?**
     - Ensure you copied the folder correctly to `htdocs`.
     - Check the URL matches your folder name exactly.

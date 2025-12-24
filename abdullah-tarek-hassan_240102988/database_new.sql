@@ -1,6 +1,7 @@
-create database health_tracker;
-use health_tracker;
-CREATE TABLE users (
+CREATE DATABASE IF NOT EXISTS health_tracker_app;
+USE health_tracker_app;
+
+CREATE TABLE IF NOT EXISTS users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(20) NOT NULL,
     password VARCHAR(255) NOT NULL,
@@ -9,7 +10,8 @@ CREATE TABLE users (
     birth_date DATE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-CREATE TABLE health_stats (
+
+CREATE TABLE IF NOT EXISTS health_stats (
     stats_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     weight_in_kg DECIMAL(5,2) NOT NULL,
@@ -20,7 +22,8 @@ CREATE TABLE health_stats (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
-CREATE TABLE daily_health_records (
+
+CREATE TABLE IF NOT EXISTS daily_health_records (
     record_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     steps INT DEFAULT 0,
